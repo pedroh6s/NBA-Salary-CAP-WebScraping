@@ -1,4 +1,4 @@
-# WEBSCRAPPING
+# NBA Salary CAP
 
 Esse projeto tem como premissa estudar e entender os conceitos de webscrapping com Python.
 
