@@ -1,27 +1,29 @@
 import pandas as pd
 import requests
-from bs4 import BeautifulSoup as BS
-import pandas as PD
+from bs4 import BeautifulSoup as bs
+import pandas as pd
+from selenium import webdriver
+from time import sleep
+from selenium.webdriver.chrome.options import Options
 
 #variáveis
 url = 'https://www.basketball-reference.com/contracts/GSW.html'
-response = requests.get(url)
-content = response.content
-site = BS(content, 'html.parser')
+option = Options()
+option.headless = True
+driver = webdriver.Chrome(options=option)
 
-dados_completos = []
+driver.get(url)
+element = driver.find_element_by_xpath('//*[@id="div_contracts"]')
+content = element.get_attribute('outerHTML')
 
-for item in site.findAll('tbody'):
-    dados = []
-    dados.append(item['a'])
-    dados.append(item['data-stat': 'age_today'])
-    dados.append(item['data-stat': 'y1'])
-    dados.append(item['data-stat': 'y2'])
-    dados.append(item['data-stat': 'y3'])
-    dados.append(item['data-stat': 'y4'])
-    dados.append(item['data-stat': 'y5'])
-    dados.append(item['data-stat': 'y6'])
-    dados_completos.append(dados)
+html = bs(content, 'html.parser')
+table = html.find(name='table')
 
-print(dados_completos)
 
+print(table)
+
+
+
+#driver.quit()
+
+#//div[@class='table_container is_setup']//table//thead//tr//th
