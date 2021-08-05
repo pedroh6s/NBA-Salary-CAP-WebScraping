@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
-#num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 times = ['Atlanta Hawks', 'Boston Celtics', 'Brooklyn Nets', 'Chicago Bulls', 'Charlotte Hornets', 'Cleveland Cavaliers', 'Dallas Mavericks', 'Denver Nuggets', 'Detroit Pistons', 'Golden State Warriors', 'Houston Rockets', 'Indiana Pacers', 'Los Angeles Clippers', 'Los Angeles Lakers', 'Memphis Grizzlies', 'Miami Heat', 'Milwaukee Bucks', 'Minnesota Timberwolves', 'New Orleans Pelicans', 'New York Knicks', 'Oklahoma City Thunder', 'Orlando Magic', 'Philadelphia 76ers', 'Phoenix Suns', 'Portland Trail Blazers', 'Sacramento Kings', 'San Antonio Spurs', 'Toronto Raptors', 'Utah Jazz', 'Washington Wizards']
 siglas = ['ATL', 'BOS', 'BRK', 'CHI', 'CHO', 'CLE', 'DAL', 'DEN', 'DET', 'GSW', 'HOU', 'IND', 'LAC', 'LAL', 'MEM', 'MIA', 'MIL', 'MIN', 'NOP', 'NYK', 'OKC', 'ORL', 'PHI', 'PHO', 'POR', 'SAC', 'SAS', 'TOR', 'UTA', 'WAS']
 
@@ -13,7 +12,6 @@ escolha = int(input('Escolha o código do  time desejado: '))
 print(f'O time escolhido foi o {times[escolha]}!')
 
 url = f'https://www.basketball-reference.com/contracts/{siglas[escolha]}.html'
-#teamurl = 'https://www.basketball-reference.com/contracts/{team}.html'
 
 response = requests.get(url)
 content = response.content
@@ -99,4 +97,3 @@ dataframe = pd.DataFrame({'Jogador': jogador,
 print(dataframe)
 
 dataframe.to_csv(f'{times[escolha]}.csv')
-
